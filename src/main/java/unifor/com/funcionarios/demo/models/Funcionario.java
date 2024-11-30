@@ -9,7 +9,7 @@ import unifor.com.funcionarios.demo.models.Enums.Profissao;
 @Getter
 @Setter
 @Entity
-@Table(name = "funcionarios")
+@Table(name = "funcionario")
 public class Funcionario {
     
     @Id
@@ -23,8 +23,8 @@ public class Funcionario {
     @Column(name = "telefone")
     private String telefone;
 
-    @Column(name = "endereço")
-    private String endereço;
+    @Column(name = "endereco")
+    private String endereco;
 
     
     @Column(name = "salario")

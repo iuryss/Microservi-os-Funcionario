@@ -1,9 +1,8 @@
 package unifor.com.funcionarios.demo.controller;
 
-import java.util.ArrayList;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,12 +27,12 @@ public class FuncionarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Funcionario> findById(@PathVariable int id) {
+    public Funcionario findById(@PathVariable Integer id) {
         Funcionario funcionario = gestor.pegarPorId(id);
         if (funcionario == null) {
-            return ResponseEntity.notFound().build();
+            return null;
         }
-        return ResponseEntity.ok(funcionario);
+        return funcionario;
     }
 
     @PostMapping
@@ -42,17 +41,17 @@ public class FuncionarioController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id){
+    public void delete(@PathVariable Integer id){
         gestor.removerFuncionario(id);
     }
 
     @PutMapping("/telefone/{id}/{telefone}")
-    public void editNumber(@PathVariable int id, @PathVariable String telefone){
+    public void editNumber(@PathVariable Integer id, @PathVariable String telefone){
         gestor.editarTelefone(id, telefone);
     }
 
     @PutMapping("/salario/{id}/{salario}")
-    public void editSalary(@PathVariable int id, @PathVariable double    salario){
+    public void editSalary(@PathVariable Integer id, @PathVariable double    salario){
         gestor.editarSalario(id, salario);
     }
 

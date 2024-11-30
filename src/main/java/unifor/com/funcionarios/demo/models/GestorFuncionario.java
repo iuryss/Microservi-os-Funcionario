@@ -1,6 +1,5 @@
 package unifor.com.funcionarios.demo.models;
 
-import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,24 +12,25 @@ public class GestorFuncionario {
     
      @Autowired
     private FuncionarioRepository funcionarioRepository;
-
-    public Funcionario pegarPorId(int id) {
-        return funcionarioRepository.findById(id).orElse(null);
-    }
-
+    
     public List<Funcionario> pegarTodos() {
         return funcionarioRepository.findAll();
     }
+    
+    public Funcionario pegarPorId(Integer id) {
+        return funcionarioRepository.findById(id).orElse(null);
+    }
+
 
     public void adicionarFuncionario(Funcionario funcionario) {
         funcionarioRepository.save(funcionario);
     }
 
-    public void removerFuncionario(int id) {
+    public void removerFuncionario(Integer id) {
         funcionarioRepository.deleteById(id);
     }
 
-    public void editarTelefone(int id, String telefone) {
+    public void editarTelefone(Integer id, String telefone) {
         Funcionario funcionario = funcionarioRepository.findById(id).orElse(null);
         if (funcionario != null) {
             funcionario.setTelefone(telefone);
@@ -38,7 +38,7 @@ public class GestorFuncionario {
         }
     }
 
-    public void editarSalario(int id, double salario) {
+    public void editarSalario(Integer id, double salario) {
         Funcionario funcionario = funcionarioRepository.findById(id).orElse(null);
         if (funcionario != null) {
             funcionario.setSalario(salario);
