@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import java.util.List;
 import unifor.com.funcionarios.demo.models.*;
 
 @RestController
@@ -23,7 +23,7 @@ public class FuncionarioController {
     private GestorFuncionario gestor;
 
     @GetMapping
-    public ArrayList<Funcionario> getAll(){
+    public List<Funcionario> getAll(){
         return gestor.pegarTodos();
     }
 
@@ -35,7 +35,7 @@ public class FuncionarioController {
         }
         return ResponseEntity.ok(funcionario);
     }
-    
+
     @PostMapping
     public void addFuncionario(@RequestBody Funcionario funcionario){
         gestor.adicionarFuncionario(funcionario);
@@ -52,8 +52,8 @@ public class FuncionarioController {
     }
 
     @PutMapping("/salario/{id}/{salario}")
-    public void editSalary(@PathVariable int id,@PathVariable String salario){
-        gestor.editarTelefone(id, salario);
+    public void editSalary(@PathVariable int id, @PathVariable double    salario){
+        gestor.editarSalario(id, salario);
     }
 
 }

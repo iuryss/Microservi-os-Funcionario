@@ -1,22 +1,37 @@
 package unifor.com.funcionarios.demo.models;
 
+import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.stereotype.Component;
-
+import unifor.com.funcionarios.demo.models.Enums.Profissao;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Component
+@Entity
+@Table(name = "funcionarios")
 public class Funcionario {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_funcionario")
     private int id;
+
+    @Column(name = "nome")
     private String nome;
+
+    @Column(name = "telefone")
     private String telefone;
+
+    @Column(name = "endereço")
     private String endereço;
-    private String profissao;
+
+    
+    @Column(name = "salario")
     private double salario;
 
-
+    @Column(name = "profissao")
+    @Enumerated(EnumType.STRING)
+    private Profissao profissao;
+    
 }
