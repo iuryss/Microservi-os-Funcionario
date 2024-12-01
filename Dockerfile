@@ -9,5 +9,5 @@ RUN ./mvnw -DoutputFile=target/mvn-dependency-list.log -B -DskipTests clean pack
 
 FROM eclipse-temurin:21-jdk
 WORKDIR /app
-COPY --from=build /app/target/demo.jar demo.jar
+COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.jar demo.jar
 CMD ["java", "-jar", "demo.jar"]
